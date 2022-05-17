@@ -30,7 +30,11 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      
+      - name: Package Armvirt as OpenWrt
+        uses: ophub/flippy-openwrt-actions@main
+        env:
+          OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
+          PACKAGE_SOC: s905d_s905x3_beikeyun
+          KERNEL_VERSION_NAME: 5.15.25_5.10.100
+
